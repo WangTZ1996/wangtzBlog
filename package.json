@@ -13,8 +13,21 @@
     "build": "node build/build.js"
   },
   "dependencies": {
+    "axios": "^0.19.2",
     "git": "^0.1.5",
+    "github-markdown-css": "^3.0.1",
+    "global": "^4.4.0",
+    "highlight": "^0.2.4",
+    "highlight.js": "^9.18.1",
+    "html-loader": "^0.5.5",
+    "jquery": "^3.4.1",
+    "markdown-loader": "^5.1.0",
+    "marked": "^0.8.0",
+    "md-text-loader": "^0.1.0",
+    "showdown": "^1.9.1",
+    "typescript": "^3.7.5",
     "vue": "^2.5.2",
+    "vue-markdown-loader": "^2.4.1",
     "vue-router": "^3.0.1"
   },
   "devDependencies": {

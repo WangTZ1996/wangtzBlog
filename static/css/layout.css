@@ -1,0 +1,43 @@
+/* 移动端 */
+
+@media screen and (max-aspect-ratio:4/3) {
+    .homePage-title {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 100%;
+        height: auto;
+        /* background: #40f; */
+    }
+    .homePage-title>img {
+        width: 80%;
+    }
+    .homePage-footer {
+        display: none;
+    }
+}
+
+
+/* PC端 */
+
+@media screen and (min-aspect-ratio:4/3) {
+    .homePage-title {
+        position: absolute;
+        top: 25%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: auto;
+        height: auto;
+        /* background: #f40; */
+    }
+    .displayHomeKey {
+        display: none;
+    }
+    .homePage-footer {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+}

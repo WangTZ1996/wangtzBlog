@@ -13,7 +13,7 @@ var Colors = {
 
 
 
-var scene, camera, fieldOfView, aspectRatio, nearPlane, farPlane, HEIGHT, WIDTH, renderer, container;
+var scene, camera, fieldOfView, aspectRatio, nearPlane, farPlane, HEIGHT, WIDTH, renderer, container, exportDom;
 
 
 function createScene() {
@@ -59,8 +59,9 @@ function createScene() {
     renderer.shadowMap.enabled = true;
 
     // Add the Renderer to the DOM, in the world div.
-    container = document.getElementById('world');
-    container.appendChild(renderer.domElement);
+    // container = document.getElementById('world');
+    // container.appendChild(renderer.domElement);
+    exportDom = renderer.domElement
 
     //RESPONSIVE LISTENER
     window.addEventListener('resize', handleWindowResize, false);
@@ -108,7 +109,7 @@ function createLights() {
 }
 
 
-Land = function() {
+var Land = function() {
     var geom = new THREE.CylinderGeometry(600, 600, 1700, 40, 10);
     //rotate on the x axis
     geom.applyMatrix(new THREE.Matrix4().makeRotationX(-Math.PI / 2));
@@ -124,7 +125,7 @@ Land = function() {
     this.mesh.receiveShadow = true;
 }
 
-Orbit = function() {
+var Orbit = function() {
 
     var geom = new THREE.Object3D();
 
@@ -132,7 +133,7 @@ Orbit = function() {
     //this.mesh.add(sun);
 }
 
-Sun = function() {
+var Sun = function() {
 
     this.mesh = new THREE.Object3D();
 
@@ -148,7 +149,7 @@ Sun = function() {
     this.mesh.add(sun);
 }
 
-Cloud = function() {
+var Cloud = function() {
     // Create an empty container for the cloud
     this.mesh = new THREE.Object3D();
     // Cube geometry and material
@@ -176,7 +177,7 @@ Cloud = function() {
     }
 }
 
-Sky = function() {
+var Sky = function() {
 
     this.mesh = new THREE.Object3D();
 
@@ -213,7 +214,7 @@ Sky = function() {
     }
 }
 
-Tree = function() {
+var Tree = function() {
 
     this.mesh = new THREE.Object3D();
 
@@ -249,7 +250,7 @@ Tree = function() {
 
 }
 
-Flower = function() {
+var Flower = function() {
 
     this.mesh = new THREE.Object3D();
 
@@ -297,7 +298,7 @@ var petalColors = [Colors.red, Colors.yellow, Colors.blue];
 
 
 
-Forest = function() {
+var Forest = function() {
 
     this.mesh = new THREE.Object3D();
 
@@ -769,3 +770,5 @@ function init(event) {
 }
 
 window.addEventListener('load', init, false);
+
+export { exportDom }
