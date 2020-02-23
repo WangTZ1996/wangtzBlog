@@ -11,6 +11,12 @@ function resolve(dir) {
 
 
 module.exports = {
+    // publicPath: "/webapps",
+    // configureWebpack: {
+    //     performance: {
+    //         hints: false
+    //     }
+    // },
     context: path.resolve(__dirname, '../'),
     entry: {
         app: './src/main.js'

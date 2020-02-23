@@ -1,16 +1,21 @@
 <template>
   <div>
+    <div class="blog-header">
+      <img src="@/assets/images/simple.jpg" alt="">
+    </div>
     <div class="markdownPad markdown-body" v-html="input" v-highlight></div>
   </div>
 </template>
 
 <script>
 import marked from "marked";
-import README from "../../WeiXin_Login.md";
-// import README from "../../20200108.md"
+// import README from "../../WeiXin_Login.md";
+import README from "../../workDaily/2020/1/WeiXin_Login.md";
 import hljs from "highlight.js";
 import "highlight.js/styles/rainbow.css";
 import Vue from "vue";
+import axios from "axios";
+
 Vue.directive("highlight", function(el) {
   let blocks = el.querySelectorAll("pre code");
   blocks.forEach(block => {
@@ -19,23 +24,61 @@ Vue.directive("highlight", function(el) {
 });
 
 export default {
-  mounted() {
-    console.log(JSON.parse(JSON.stringify(README)));
-    console.log(JSON.stringify(README));
-    axios({
-      url: '/wangtz/',
-      method: 'POST',
-      data: {
-        markdownDaily: JSON.stringify(README)
-      }
-    }).then(res => {
-      console.log(res)
-    })
-  },
   data() {
     return {
-      input: README
+      input: "",
+      dateInfo: [2020, 2, 9]
     };
+  },
+  created() {
+    axios
+      .get("http://www.wangtz.cn:8087/eassy?id=" + this.$route.query.id)
+      .then(res => {
+        console.log(res, "页面初始get请求");
+        this.input = JSON.parse(res.data[0].markdownDaily);
+      });
+  },
+  mounted() {
+    console.log("服务启动");
+    console.log(this.$router);
+    // axios.post('http://www.wangtz.cn:8087/eassy',{
+    //   'author': 'wangtianzhu',
+    //   'date': new Date().getTime(),
+    //   'dateInfo': this.dateInfo,
+    //   'title': 'PC端微信扫码授权登录',
+    //   'markdownDaily': JSON.stringify(README)
+    // }).then(res => {
+    //   console.log(res)
+    //   axios.get("http://www.wangtz.cn:8087/eassy?id=" + res.data.id).then(res => {
+    //   console.log(res, '页面初始get请求');
+    //   this.input = JSON.parse(res.data[0].markdownDaily)
+    // });
+    // }).catch(err => {
+    //   console.log(err)
+    // })
+
+    // console.log(JSON.parse(JSON.stringify(README)));
+    // console.log(JSON.stringify(README));
+    // axios({
+    //   url: 'http://www.wangtz.cn:8087/',
+    //   method: 'POST',
+    //   data: {
+    //     markdownDaily: JSON.stringify(README)
+    //   },
+    //   headers: {
+    //      Accept: "application/json",
+    //      "Access-Control-Allow-Origin": "*"
+    //   }
+    // }).then(res => {
+    //   console.log(res)
+    // })
+    // console.log(markdownEassy)
+    // console.log(this.input)
+  },
+  computed: {
+    day() {
+      return this.dateInfo[2] < 10 ? "0" + this.dateInfo[2] : this.dateInfo[2];
+    }
   }
 };
 </script>
@@ -50,6 +93,17 @@ export default {
     font-size: 1.6rem;
     margin: 0 auto;
   }
+  .blog-header {
+    max-width: 60rem;
+    height: 10rem;
+    background: #fff;
+    margin: 0 auto;
+  }
+  .blog-header > img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
+  }
 }
 @media screen and (max-width: 415px) {
   .markdownPad {
@@ -58,6 +112,16 @@ export default {
     padding-bottom: 12rem;
     font-size: 1.4rem;
     margin: 0 auto;
+  }
+  .blog-header {
+    height: 10rem;
+    background: #fff;
+    margin: 0 auto;
+  }
+  .blog-header > img {
+    width: 10rem;
+    height: 10rem;
+    object-fit: cover;
   }
 }
 .markdownPad >>> img {

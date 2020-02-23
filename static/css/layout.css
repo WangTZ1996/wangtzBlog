@@ -8,10 +8,12 @@
         transform: translate(-50%, -50%);
         width: 100%;
         height: auto;
+        text-align: center;
         /* background: #40f; */
     }
     .homePage-title>img {
         width: 80%;
+        max-width: 33.1rem;
     }
     .homePage-footer {
         display: none;
@@ -29,6 +31,7 @@
         transform: translate(-50%, -50%);
         width: auto;
         height: auto;
+        text-align: center;
         /* background: #f40; */
     }
     .displayHomeKey {
