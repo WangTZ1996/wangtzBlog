@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <keep-alive>
-      <router-view v-if="$route.meta.keepAlive"/>
+      <router-view v-if="$route.meta.keepAlive" :key="$route.fullPath"/>
     </keep-alive>
-    <router-view v-if="!$route.meta.keepAlive"/>
+    <router-view v-if="!$route.meta.keepAlive" :key="$route.fullPath"/>
   </div>
 </template>
 
@@ -21,6 +21,9 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   /* text-align: center; */
   color: #2c3e50;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box!important;
 }
 html,body {
   margin: 0;

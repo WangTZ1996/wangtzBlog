@@ -1,5 +1,15 @@
 /* 移动端 */
 
+a, abbr, acronym, address, applet, article, aside, audio, b, big, blockquote, body, canvas, caption, center, cite, code, dd, del, details, dfn, div, dl, dt, em, embed, fieldset, figcaption, figure, footer, form, h1, h2, h3, h4, h5, h6, header, hgroup, html, i, iframe, img, ins, input, kbd, label, legend, li, mark, menu, nav, object, ol, output, p, pre, q, ruby, s, samp, section, small, span, strike, strong, sub, summary, sup, table, tbody, td, tfoot, th, thead, time, tr, tt, u, ul, var, video {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    letter-spacing: 0.07rem;
+}
+
+
+
 @media screen and (max-aspect-ratio:4/3) {
     .homePage-title {
         position: absolute;
@@ -15,11 +25,22 @@
         width: 80%;
         max-width: 33.1rem;
     }
-    .homePage-footer {
+    /* .homePage-footer {
+        display: none;
+    } */
+    .displayHomeKey {
         display: none;
     }
+    .homePage-footer {
+        position: absolute;
+        bottom: 2rem;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .homePage-footer .dock {
+        width: 90%!important;
+    }
 }
-
 
 /* PC端 */
 
@@ -42,5 +63,22 @@
         bottom: 2rem;
         left: 50%;
         transform: translateX(-50%);
+    }
+    .icon-warpper {
+        width: 6rem;
+        display: flex;
+        flex-direction: column;
+        margin-top: 1.4rem;
+    }
+    .icon-Line {
+        width: 5rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+    .icon-Line img {
+        height: 5rem;
+        margin: 1rem 0;
     }
 }

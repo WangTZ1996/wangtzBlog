@@ -16,6 +16,7 @@ const env = process.env.NODE_ENV === 'testing'
   : require('../config/prod.env')
 
 const webpackConfig = merge(baseWebpackConfig, {
+  // base_api: "http://www.wangtz.cn:8087",
   module: {
     rules: utils.styleLoaders({
       sourceMap: config.build.productionSourceMap,

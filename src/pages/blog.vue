@@ -1,16 +1,11 @@
 <template>
   <div>
-    <div class="blog-header">
-      <img src="@/assets/images/simple.jpg" alt="">
-    </div>
     <div class="markdownPad markdown-body" v-html="input" v-highlight></div>
   </div>
 </template>
 
 <script>
 import marked from "marked";
-// import README from "../../WeiXin_Login.md";
-import README from "../../workDaily/2020/1/WeiXin_Login.md";
 import hljs from "highlight.js";
 import "highlight.js/styles/rainbow.css";
 import Vue from "vue";
@@ -27,7 +22,10 @@ export default {
   data() {
     return {
       input: "",
-      dateInfo: [2020, 2, 9]
+      dateInfo: [2020, 4, 1],
+      title: '',
+      fileObj: 'file',
+      markdownInput: '',
     };
   },
   created() {
@@ -39,46 +37,18 @@ export default {
       });
   },
   mounted() {
-    console.log("服务启动");
-    console.log(this.$router);
-    // axios.post('http://www.wangtz.cn:8087/eassy',{
-    //   'author': 'wangtianzhu',
-    //   'date': new Date().getTime(),
-    //   'dateInfo': this.dateInfo,
-    //   'title': 'PC端微信扫码授权登录',
-    //   'markdownDaily': JSON.stringify(README)
-    // }).then(res => {
-    //   console.log(res)
-    //   axios.get("http://www.wangtz.cn:8087/eassy?id=" + res.data.id).then(res => {
-    //   console.log(res, '页面初始get请求');
-    //   this.input = JSON.parse(res.data[0].markdownDaily)
-    // });
-    // }).catch(err => {
-    //   console.log(err)
-    // })
-
-    // console.log(JSON.parse(JSON.stringify(README)));
-    // console.log(JSON.stringify(README));
-    // axios({
-    //   url: 'http://www.wangtz.cn:8087/',
-    //   method: 'POST',
-    //   data: {
-    //     markdownDaily: JSON.stringify(README)
-    //   },
-    //   headers: {
-    //      Accept: "application/json",
-    //      "Access-Control-Allow-Origin": "*"
-    //   }
-    // }).then(res => {
-    //   console.log(res)
-    // })
-    // console.log(markdownEassy)
-    // console.log(this.input)
   },
   computed: {
     day() {
       return this.dateInfo[2] < 10 ? "0" + this.dateInfo[2] : this.dateInfo[2];
+    },
+    mdInput: {
+      get() {
+        return marked(this.markdownInput)
+      },
     }
+  }, 
+  methods: {
   }
 };
 </script>
@@ -148,6 +118,12 @@ export default {
   margin: 0 2px;
   font-family: "Microsoft YaHei" !important;
 }
+.markdownPad >>> ul {
+  margin-left: 2em;
+}
+.markdownPad >>> ul li {
+  line-height: 25px;
+}
 
 @keyframes squeezeBody {
   from {
@@ -197,14 +173,19 @@ export default {
   width: 100%;
 }
 
-.markdownPad >>> h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.markdownPad >>> h1 {
   font-family: "Monospace";
   font-weight: bold;
+  margin: 1.6rem 0;
+}
+.markdownPad >>> h2,
+.markdownPad >>> h3,
+.markdownPad >>> h4,
+.markdownPad >>> h5,
+.markdownPad >>> h6 {
+  font-family: "Monospace";
+  font-weight: bold;
+  margin: 0.8rem 0;
 }
 
 .markdownPad >>> h1 {
@@ -407,5 +388,10 @@ h6 {
 .markdownPad >>> .version {
   color: white;
   font-size: 0.8em !important;
+}
+
+.fileInput {
+  width: 5rem;
+  height: 5rem;
 }
 </style>

@@ -1,3 +1,5 @@
+var THREE = require('three')
+
 var Colors = {
 	red:0xf25346,
 	yellow:0xedeb27,

@@ -12,15 +12,17 @@ module.exports = {
         assetsPublicPath: '/',
         proxyTable: {
             '/wangtz': {
-                target: 'http://www.wangtz.cn:8087', // 王天柱服务器
+                target: 'http://127.0.0.1:8087', // 王天柱服务器
             },
             changeOrigin: true,
-
+            // pathRewrite: {
+            //     '^/wangtz': '/'
+            // }
         },
 
         // Various Dev Server settings
         host: 'localhost', // can be overwritten by process.env.HOST
-        // host: '47.1.06.89.2:8087',
+        // host: '47.106.89.2:8087',
         port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
         autoOpenBrowser: false,
         errorOverlay: true,

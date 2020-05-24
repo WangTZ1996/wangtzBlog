@@ -4,13 +4,31 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import axios from 'axios'
+import {
+  Uploader,
+  Toast,
+  Loading
+} from 'vant'
+
+
+router.beforeEach((to, from, next) => {
+  next()
+})
 
 Vue.config.productionTip = false
 
+Vue.prototype.$toast = Toast;
+
+Vue.use(Uploader)
+Vue.use(Toast)
+Vue.use(Loading) 
+
 /* eslint-disable no-new */
 new Vue({
-    el: '#app',
-    router,
-    components: { App },
-    template: '<App/>'
+  el: '#app',
+  router,
+  components: {
+    App
+  },
+  template: '<App/>'
 })
