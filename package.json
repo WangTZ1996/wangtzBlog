@@ -13,7 +13,7 @@
     "build": "node build/build.js"
   },
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "bootstrap": "^4.5.0",
     "git": "^0.1.5",
     "github-markdown-css": "^3.0.1",
