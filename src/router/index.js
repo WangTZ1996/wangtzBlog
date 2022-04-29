@@ -6,16 +6,9 @@ Vue.use(Router)
 export default new Router({
     // mode: 'history',
     // base: 'wtzblog_2.0',
-    routes: [{
-            path: '/',
-            name: 'home',
-            meta: {
-                keepAlive: true
-            },
-            component: resolve => require(['@/pages/home'], resolve)
-        },
+    routes: [
         {
-            path: '/blogTable',
+            path: '/',
             name: 'index',
             meta: {
                 keepAlive: false
@@ -53,6 +46,22 @@ export default new Router({
                 keepAlive: false
             },
             component: resolve => require(['@/pages/uploadFile.vue'], resolve)
-        }
+        },
+        {
+          path: '/download',
+          name: 'download',
+          meta: {
+            keepAlive: false
+          },
+          component: resolve => require(['@/pages/download.vue'], resolve)
+        },
+        {
+          path: '/player',
+          name: 'player',
+          meta: {
+            keepAlive: false
+          },
+          component: resolve => require(['@/pages/player.vue'], resolve)
+        },
     ]
 }, )

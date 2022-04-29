@@ -9,6 +9,9 @@ import {
   Toast,
   Loading
 } from 'vant'
+import 'bootstrap/dist/css/bootstrap.min.css'
+import 'bootstrap/dist/js/bootstrap.min.js'
+
 
 
 router.beforeEach((to, from, next) => {
@@ -21,7 +24,7 @@ Vue.prototype.$toast = Toast;
 
 Vue.use(Uploader)
 Vue.use(Toast)
-Vue.use(Loading) 
+Vue.use(Loading)
 
 /* eslint-disable no-new */
 new Vue({

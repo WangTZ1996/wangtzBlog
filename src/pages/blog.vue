@@ -1,6 +1,7 @@
 <template>
   <div>
     <div class="markdownPad markdown-body" v-html="input" v-highlight></div>
+    <div class="deleteEassy" @click="deleteEassy($route.query.id)">DELETE</div>
   </div>
 </template>
 
@@ -37,6 +38,7 @@ export default {
       });
   },
   mounted() {
+    
   },
   computed: {
     day() {
@@ -46,9 +48,17 @@ export default {
       get() {
         return marked(this.markdownInput)
       },
-    }
+    },
   }, 
   methods: {
+    deleteEassy(id) {
+      axios.delete("http://www.wangtz.cn:8087/eassy?id=" + id).then(
+        res => {
+          console.log('DELETED')
+          console.log(res)
+        }
+      )
+    }
   }
 };
 </script>
@@ -60,7 +70,7 @@ export default {
     height: auto;
     padding: 1rem 2rem;
     padding-bottom: 12rem;
-    font-size: 1.6rem;
+    font-size: 1.4rem;
     margin: 0 auto;
   }
   .blog-header {
@@ -119,7 +129,7 @@ export default {
   font-family: "Microsoft YaHei" !important;
 }
 .markdownPad >>> ul {
-  margin-left: 2em;
+  margin-left: 1em;
 }
 .markdownPad >>> ul li {
   line-height: 25px;
@@ -177,6 +187,7 @@ export default {
   font-family: "Monospace";
   font-weight: bold;
   margin: 1.6rem 0;
+  /*border: none;*/
 }
 .markdownPad >>> h2,
 .markdownPad >>> h3,
@@ -185,11 +196,13 @@ export default {
 .markdownPad >>> h6 {
   font-family: "Monospace";
   font-weight: bold;
-  margin: 0.8rem 0;
+  margin: 1.2rem 0;
 }
 
-.markdownPad >>> h1 {
-  border-bottom: 1px solid #ddd;
+
+
+.markdownPad >>> p {
+  margin: 1.4rem 0;
 }
 
 .markdownPad >>> .serif {
@@ -393,5 +406,14 @@ export default {
 .fileInput {
   width: 5rem;
   height: 5rem;
+}
+
+.deleteEassy {
+  width: 20rem;
+  height: 5rem;
+  background: #f40;
+  line-height: 5rem;
+  text-align: center;
+  display: none;
 }
 </style>

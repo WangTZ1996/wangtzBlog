@@ -11,6 +11,8 @@
       <input type="text" v-model="title">
       <label name="classify" for="classify">分类</label>
       <input type="text" v-model="classify">
+      <label name="summary" for="summary">简介</label>
+      <input type="text" v-model="summary">
     </div>
     <input class="fileInput" type="file" @change="readFile($event)" />
     <div class="markdownPad markdown-body" v-html="fileObj" v-highlight></div>
@@ -41,6 +43,7 @@ export default {
       fileObj: 'file',
       markdownInput: '',
       classify: 'html',
+      summary: '',
     };
   },
   computed: {
@@ -77,6 +80,7 @@ export default {
       'dateInfo': this.dateInfo,
       'title': this.title,
       'classify': this.classify,
+      'summary': this.summary,
       'markdownDaily': JSON.stringify(this.fileObj)
     }).then(res => {
       console.log(res)
